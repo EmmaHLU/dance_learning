@@ -1,0 +1,24 @@
+//
+//  Localizable.strings
+//  DanZZ
+//
+//  Created by Hong Lu on 04/12/2025.
+//
+"greeting.title" = "Welcome Back";
+"button.signup" = "Sign Up";
+"profile.logout" = "Sign Out";
+"profile.email" = "Email";
+"profile.name" = "User Name";
+"profile.myProfile" = "My Profile";
+"tab.player" = "Player";
+"tab.profile" = "Mine";
+"player.aiPlayer" = "Your AI assistant in your dance-learning journey";
+"text.signin" = "Sign In with Email and Password";
+"signin.password" = "Password";
+"button.signin" = "Sign In";
+"text.signup" = "Don't have an account?";
+"button.creatAccount" = "Create DanZZ Account";
+"button.confirmPwd" = "Confirm Password";
+"signup.complete" = "Welcome! Registration Complete!";
+"language.select" = "Language";
+

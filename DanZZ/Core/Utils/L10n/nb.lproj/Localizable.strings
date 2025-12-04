@@ -1,0 +1,25 @@
+//
+//  Localizable.strings
+//  DanZZ
+//
+//  Created by Hong Lu on 04/12/2025.
+//
+// Localizable.strings (Norwegian Bokmål)
+
+"greeting.title" = "Velkommen tilbake";
+"button.signup" = "Registrer deg";
+"profile.logout" = "Logg ut";
+"profile.email" = "E-post";
+"profile.name" = "Brukernavn";
+"profile.myProfile" = "Min Profil";
+"tab.player" = "Spiller";
+"tab.profile" = "Min";
+"player.aiPlayer" = "Din AI-assistent i din danselæringsreise";
+"text.signin" = "Logg inn med e-post og passord";
+"signin.password" = "Passord";
+"button.signin" = "Logg inn";
+"text.signup" = "Har du ingen konto?";
+"button.creatAccount" = "Opprett DanZZ-konto";
+"button.confirmPwd" = "Bekreft passord";
+"signup.complete" = "Velkommen! Registrering fullført!";
+"language.select" = "Språk";

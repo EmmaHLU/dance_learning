@@ -1,0 +1,25 @@
+//
+//  Localizable.strings
+//  DanZZ
+//
+//  Created by Hong Lu on 04/12/2025.
+//
+// Localizable.strings (Chinese Simplified)
+
+"greeting.title" = "欢迎回来";
+"button.signup" = "注册";
+"profile.logout" = "退出登录";
+"profile.email" = "邮箱";
+"profile.name" = "用户名";
+"profile.myProfile" = "我的资料";
+"tab.player" = "播放器";
+"tab.profile" = "我的";
+"player.aiPlayer" = "您舞蹈学习旅程中的 AI 助理";
+"text.signin" = "使用邮箱和密码登录";
+"signin.password" = "密码";
+"button.signin" = "登录";
+"text.signup" = "没有账号？";
+"button.creatAccount" = "创建 DanZZ 账号";
+"button.confirmPwd" = "确认密码";
+"signup.complete" = "欢迎！注册完成！";
+"language.select" = "语言";

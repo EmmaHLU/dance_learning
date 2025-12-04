@@ -20,8 +20,8 @@ struct PlayerView: View {
             } else {
                 Color.black.overlay(
                     VStack {
-                        Text ("Your Dance AI Player").font(.largeTitle).foregroundColor(.white)
-                        Text("Tap the button to load a dance video").foregroundColor(.gray)
+                        Text ("player.aiPlayer").font(.largeTitle).foregroundColor(.white)
+//                        Text("Tap the button to load a dance video").foregroundColor(.gray)
                     }
                 )
             }
@@ -43,12 +43,20 @@ struct PlayerView: View {
                     }
                     //microphone button
                     Button(action: {
-                        print("Microphone button tapped")
+                        if viewModel.isRecording{
+                            viewModel.stopSpeech()
+                        }else {
+                            viewModel.player?.pause()
+                            viewModel.startSpeech()
+                        }
+                        
                     }) {
-                        Image(systemName: "mic.circle.fill")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .foregroundColor(.red)
+                        Image(systemName: viewModel.isRecording ? "mic.slash.fill" : "mic.fill")
+                                         .font(.system(size: 20))
+                                         .foregroundColor(.white)
+                                         .padding()
+                                         .background(viewModel.isRecording ? Color.red : Color.blue)
+                                         .clipShape(Circle())
                     }
                 }
                 
@@ -61,6 +69,7 @@ struct PlayerView: View {
                 url in
                 if let url = url {
                     viewModel.loadVideo(url: url)
+                    viewModel.extractBeats(url: url)
                 }
             }
         }

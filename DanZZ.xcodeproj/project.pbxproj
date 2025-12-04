@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D5BE3BF2ED9CA9500E4E311 /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 2D5BE3BE2ED9CA9500E4E311 /* GoogleGenerativeAI */; };
+		2D5BE3DC2EDB4A2400E4E311 /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = 2D5BE3DB2EDB4A2400E4E311 /* FirebaseAI */; };
+		2D5BE3DE2EDB4A2400E4E311 /* FirebaseAILogic in Frameworks */ = {isa = PBXBuildFile; productRef = 2D5BE3DD2EDB4A2400E4E311 /* FirebaseAILogic */; };
+		2DE36C202EE0594E00E3627C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2DE36C1F2EE0594E00E3627C /* FirebaseAuth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,9 +35,33 @@
 		2DAD36F12ED89896001D2A6F /* DanZZUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DanZZUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2DE36C2A2EE1960E00E3627C /* Exceptions for "DanZZ" folder in "DanZZ" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"/Localized: Core/Utils/L10n/Localizable.strings",
+			);
+			target = 2DAD36D92ED89893001D2A6F /* DanZZ */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		2DE36C2B2EE1960E00E3627C /* Exceptions for "DanZZ" folder in "Compile Sources" phase from "DanZZ" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 2DAD36D62ED89893001D2A6F /* Sources */;
+			membershipExceptions = (
+				"/Localized: Core/Utils/L10n/Localizable.strings",
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2DAD36DC2ED89893001D2A6F /* DanZZ */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2DE36C2A2EE1960E00E3627C /* Exceptions for "DanZZ" folder in "DanZZ" target */,
+				2DE36C2B2EE1960E00E3627C /* Exceptions for "DanZZ" folder in "Compile Sources" phase from "DanZZ" target */,
+			);
 			path = DanZZ;
 			sourceTree = "<group>";
 		};
@@ -56,7 +82,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D5BE3BF2ED9CA9500E4E311 /* GoogleGenerativeAI in Frameworks */,
+				2D5BE3DE2EDB4A2400E4E311 /* FirebaseAILogic in Frameworks */,
+				2DE36C202EE0594E00E3627C /* FirebaseAuth in Frameworks */,
+				2D5BE3DC2EDB4A2400E4E311 /* FirebaseAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +111,7 @@
 				2DAD36DC2ED89893001D2A6F /* DanZZ */,
 				2DAD36EA2ED89896001D2A6F /* DanZZTests */,
 				2DAD36F42ED89896001D2A6F /* DanZZUITests */,
+				2DE36C1E2EE0594E00E3627C /* Frameworks */,
 				2DAD36DB2ED89893001D2A6F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,6 +124,13 @@
 				2DAD36F12ED89896001D2A6F /* DanZZUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2DE36C1E2EE0594E00E3627C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -117,7 +153,9 @@
 			);
 			name = DanZZ;
 			packageProductDependencies = (
-				2D5BE3BE2ED9CA9500E4E311 /* GoogleGenerativeAI */,
+				2D5BE3DB2EDB4A2400E4E311 /* FirebaseAI */,
+				2D5BE3DD2EDB4A2400E4E311 /* FirebaseAILogic */,
+				2DE36C1F2EE0594E00E3627C /* FirebaseAuth */,
 			);
 			productName = DanZZ;
 			productReference = 2DAD36DA2ED89893001D2A6F /* DanZZ.app */;
@@ -198,11 +236,13 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				nb,
 			);
 			mainGroup = 2DAD36D12ED89893001D2A6F;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				2D5BE3BD2ED9CA9500E4E311 /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
+				2D5BE3DA2EDB4A2400E4E311 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2DAD36DB2ED89893001D2A6F /* Products */;
@@ -409,8 +449,10 @@
 				DEVELOPMENT_TEAM = AGQS7JLL66;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = " This app requires microphone access.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need permission to save analyzed clips back to your photo library.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to select dance videos for practice.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app needs speech recognition.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -444,8 +486,10 @@
 				DEVELOPMENT_TEAM = AGQS7JLL66;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = " This app requires microphone access.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need permission to save analyzed clips back to your photo library.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to select dance videos for practice.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app needs speech recognition.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -595,21 +639,31 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2D5BE3BD2ED9CA9500E4E311 /* XCRemoteSwiftPackageReference "generative-ai-swift" */ = {
+		2D5BE3DA2EDB4A2400E4E311 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/google/generative-ai-swift";
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.5.6;
+				minimumVersion = 12.6.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2D5BE3BE2ED9CA9500E4E311 /* GoogleGenerativeAI */ = {
+		2D5BE3DB2EDB4A2400E4E311 /* FirebaseAI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2D5BE3BD2ED9CA9500E4E311 /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
-			productName = GoogleGenerativeAI;
+			package = 2D5BE3DA2EDB4A2400E4E311 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAI;
+		};
+		2D5BE3DD2EDB4A2400E4E311 /* FirebaseAILogic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D5BE3DA2EDB4A2400E4E311 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAILogic;
+		};
+		2DE36C1F2EE0594E00E3627C /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D5BE3DA2EDB4A2400E4E311 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

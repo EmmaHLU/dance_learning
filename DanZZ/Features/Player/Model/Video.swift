@@ -12,7 +12,7 @@ struct Video {
     let uploadDate: Date
     let url: String?
     let genres: [GenreDTO]
-    let beats:[BeatSegment]?
+    let beats:[Double]?
     
 }
 

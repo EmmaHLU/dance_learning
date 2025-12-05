@@ -23,6 +23,14 @@ enum ToolRegistry {
                      "beatsPerGroup": .integer(description: "The number of beats per group.")]
     )
     
+    static let playBeats: FunctionDeclaration = FunctionDeclaration (
+        name: "loopPlayBeats",
+        description: "Play the selected beats in a loop mode.",
+        parameters: ["startGroupIndex" : .integer(description: "The index of the starting beat group starting from 1. "),
+                     "endGroupIndex": .integer(description: "The index of the ending beat group starting from 1. "),
+                     "beatsPerGroup": .integer(description: "The number of beats per group."),]
+    )
+    
     
     static let loopPlayBeats: FunctionDeclaration = FunctionDeclaration (
         name: "loopPlayBeats",

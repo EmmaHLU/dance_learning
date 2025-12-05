@@ -12,14 +12,16 @@ import Combine
 class SpeechRecognizer: NSObject, ObservableObject {
     @Published var transcript: String = ""
     
-    private let recognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
+    private let recognizer: SFSpeechRecognizer?
     private let audioEngine = AVAudioEngine()
     private var request: SFSpeechAudioBufferRecognitionRequest? // for stream audio recognition
     private var recognitionTask: SFSpeechRecognitionTask?
     
-    override init() {
+    init(locale: Locale) {
+        self.recognizer = SFSpeechRecognizer(locale: locale)
         super.init()
         requestAuthorization()
+        
     }
     
     //request authorization

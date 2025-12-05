@@ -13,7 +13,7 @@ struct MainContentView: View {
     var body: some View {
         TabView {
             NavigationStack {
-                PlayerView()
+                PlayerView(localeManager: localeManager)
                     .navigationTitle("DanZZ Player")
             }
             .tabItem {

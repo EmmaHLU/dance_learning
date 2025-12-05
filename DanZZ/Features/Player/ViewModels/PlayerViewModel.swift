@@ -18,28 +18,29 @@ class PlayerViewModel: ObservableObject {
     @Published var showingFilePicker = false
     
     private let playerManager: PlayerManager
-    private let aiService = GeminiAIService.shared
+    private let aiService = GeminiAIService()
     
     //speech recognition
     @Published var transcript: String = ""
     @Published var isRecording = false
-    let speech = SpeechRecognizer()
+    let speech: SpeechRecognizer
     
     
     
-    init(playerManager: PlayerManager = PlayerManager.shared){
+    init(locale: Locale, playerManager: PlayerManager = PlayerManager.shared){
         self.player = nil
         self.videoURL = nil
         self.playerManager = playerManager
+        self.speech = SpeechRecognizer(locale: locale)
     }
     
     func openFilePicker() {
         self.showingFilePicker = true
     }
     
-    func loadVideo (url: URL) {
+    func loadVideo (url: URL) async {
         self.videoURL = url
-        self.playerManager.setURL(url: url)
+        await self.playerManager.setURL(url: url)
         
         self.player = self.playerManager.player
         
@@ -64,11 +65,12 @@ class PlayerViewModel: ObservableObject {
     }
     
     func stopSpeech(){
+        guard isRecording else { return }
         speech.stopRecording()
         isRecording = false
         Task{
+            print("the transcript is: ")
             print(transcript)
-            transcript = "play the second and third 8 beats for 5 times"
             await callAI(instruction: transcript)
         }
     }

@@ -11,7 +11,12 @@ import SwiftUI
 
 //page for the player
 struct PlayerView: View {
-    @StateObject var viewModel = PlayerViewModel()
+    @StateObject var viewModel: PlayerViewModel
+    @EnvironmentObject var localeManager: LocalManager
+    
+    init(localeManager: LocalManager) {
+        _viewModel = StateObject(wrappedValue: PlayerViewModel(locale: localeManager.currentLocale))
+    }
     
     var body: some View {
         ZStack {
@@ -29,7 +34,7 @@ struct PlayerView: View {
                 Spacer()
                 ZStack(alignment: .bottom){
                     HStack {
-                        Spacer()
+                        
                         //select file to open button
                         Button (action: viewModel.openFilePicker){
                             Image(systemName: "plus.circle.fill")
@@ -39,25 +44,28 @@ struct PlayerView: View {
                                 .foregroundColor(.white)
                                 .clipShape(Circle())
                         }
-                        .padding(.trailing, 20)
-                    }
-                    //microphone button
-                    Button(action: {
-                        if viewModel.isRecording{
-                            viewModel.stopSpeech()
-                        }else {
-                            viewModel.player?.pause()
-                            viewModel.startSpeech()
+                        .padding(.leading, 20)
+                        Spacer()
+                        //microphone button
+                        Button(action: {
+                            if viewModel.isRecording{
+                                viewModel.stopSpeech()
+                            }else {
+                                viewModel.player?.pause()
+                                viewModel.startSpeech()
+                            }
+                            
+                        }) {
+                            Image(systemName: viewModel.isRecording ? "mic.slash.fill" : "mic.fill")
+                                             .font(.system(size: 20))
+                                             .foregroundColor(.white)
+                                             .padding()
+                                             .background(viewModel.isRecording ? Color.red : Color.blue)
+                                             .clipShape(Circle())
                         }
-                        
-                    }) {
-                        Image(systemName: viewModel.isRecording ? "mic.slash.fill" : "mic.fill")
-                                         .font(.system(size: 20))
-                                         .foregroundColor(.white)
-                                         .padding()
-                                         .background(viewModel.isRecording ? Color.red : Color.blue)
-                                         .clipShape(Circle())
+                        .padding(.trailing, 30)
                     }
+                   
                 }
                 
                 .padding(.bottom, 30)
@@ -68,8 +76,11 @@ struct PlayerView: View {
             PhotoVideoPicker(isPresented: $viewModel.showingFilePicker){
                 url in
                 if let url = url {
-                    viewModel.loadVideo(url: url)
-                    viewModel.extractBeats(url: url)
+                    Task {
+                            viewModel.extractBeats(url: url)
+                            await viewModel.loadVideo(url: url)
+                            
+                        }
                 }
             }
         }

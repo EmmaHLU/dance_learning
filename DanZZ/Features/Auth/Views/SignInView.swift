@@ -62,10 +62,10 @@ struct SignInView: View {
             .padding(.top, 20)
             
             Spacer()
-            
-                .fullScreenCover(isPresented: $viewModel.isSignInOK) {
-                    MainContentView()
-                }
+//            
+//                .fullScreenCover(isPresented: $viewModel.isSignInOK) {
+//                    MainContentView()
+//                }
         }
     }
 }

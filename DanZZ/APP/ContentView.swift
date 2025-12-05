@@ -10,11 +10,8 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationStack {
-            SignInView()
+            AuthCheckView()
         }
     }
 }
 
-#Preview {
-    ContentView()
-}

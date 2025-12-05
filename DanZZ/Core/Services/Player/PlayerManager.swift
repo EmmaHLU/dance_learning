@@ -17,6 +17,9 @@ class PlayerManager: ObservableObject{
     @Published private(set) var currentTime: Double = 0.0
     var loopObserver: Any?
     var timeObserver: Any?
+    var duration : CMTime?
+    var startTime = CMTime(seconds: 0, preferredTimescale: 600)
+    var endTime = CMTime(seconds: 0, preferredTimescale: 600)
 
     
     private init(){
@@ -29,13 +32,25 @@ class PlayerManager: ObservableObject{
         self.player = AVPlayer()
     }
     
-    func setURL (url: URL) {
+    func setURL (url: URL) async {
         let asset = AVURLAsset(url: url)
+        do {
+            let duration: CMTime = try await asset.load(.duration)
+            self.duration = duration
+            self.endTime = duration
+        }catch {
+            print("failed to get duration")
+        }
+        
         self.player = AVPlayer(playerItem: AVPlayerItem(asset: asset))
         timeObserver = self.player?.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.1, preferredTimescale: 600), queue: .main) { [weak self] time in
             guard let self = self else { return }
             self.currentTime = CMTimeGetSeconds(time)
         }
+    }
+    
+    func play() {
+        self.player?.play()
     }
     
     func setGlobalRate (_ rate: Float) -> JSONObject{
@@ -52,11 +67,19 @@ class PlayerManager: ObservableObject{
         return seekPosition(startTime)
     }
     
+    func playBeats(startGroupIndex: Int, endGroupIndex: Int, beatsPerGroup: Int) -> JSONObject {
+        let startBeatIndex = ((startGroupIndex - 1) * beatsPerGroup) + 1
+        let endBeatIndex = (endGroupIndex * beatsPerGroup)
+        let startTime = BeatAPIService.shared.beats_to_time(beatIndex: startBeatIndex) ?? 0
+        let endTime = BeatAPIService.shared.beats_to_time(beatIndex: endBeatIndex) ?? CMTimeGetSeconds(self.endTime)
+        return loopPlay(start: startTime, end: endTime, times: 1)
+    }
+    
     func loopPlayBeats(startGroupIndex: Int, endGroupIndex: Int, beatsPerGroup: Int, loopTimes: Int = .max) -> JSONObject {
         let startBeatIndex = ((startGroupIndex - 1) * beatsPerGroup) + 1
         let endBeatIndex = (endGroupIndex * beatsPerGroup)
         let startTime = BeatAPIService.shared.beats_to_time(beatIndex: startBeatIndex) ?? 0
-        let endTime = BeatAPIService.shared.beats_to_time(beatIndex: endBeatIndex) ?? BeatAPIService.shared.get_last_beat()!
+        let endTime = BeatAPIService.shared.beats_to_time(beatIndex: endBeatIndex) ?? CMTimeGetSeconds(self.endTime)
         return loopPlay(start: startTime, end: endTime, times: loopTimes)
     }
     
@@ -66,8 +89,9 @@ class PlayerManager: ObservableObject{
             return ["result": .string("error: position must be >= 0")]
         }
         let time = CMTime(seconds: pos, preferredTimescale: 600)
+        self.startTime = time
         self.player?.seek(to: time)
-        self.player?.play()
+//        self.player?.play()
         return ["result": .string("success")]
     }
     
@@ -77,9 +101,11 @@ class PlayerManager: ObservableObject{
         }
         let startTime = CMTime(seconds: start, preferredTimescale: 600)
         let endTime = CMTime(seconds: end, preferredTimescale: 600)
-        player.seek(to: startTime){seekFinished in
+        self.startTime = startTime
+        self.endTime = endTime
+        player.seek(to: self.startTime){seekFinished in
             if seekFinished {
-                player.play()
+//                player.play()
             }
         }
 
@@ -87,14 +113,14 @@ class PlayerManager: ObservableObject{
         let interval = CMTime(seconds: 0.05, preferredTimescale: 600)
         loopObserver = player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] currentTime in
             guard let self = self else {return}
-            if currentTime >= endTime {
+            if currentTime >= self.endTime {
                 if remainingLoops == 1 {// finish looping
                     player.pause()
                     self.loopObserver.map{player.removeTimeObserver($0)}
                     self.loopObserver = nil
                 } else { // continue to loop
                     if remainingLoops != .max {remainingLoops -= 1}
-                    player.seek(to: startTime) { seekFinished in
+                    player.seek(to: self.startTime) { seekFinished in
                         if seekFinished {
                             player.play()
                         }

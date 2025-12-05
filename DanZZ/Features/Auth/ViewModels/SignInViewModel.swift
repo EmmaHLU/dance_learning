@@ -36,10 +36,7 @@ class SingInViewModel: ObservableObject {
             if let error = error {
                 self?.errorMessage = error.localizedDescription
             } else if authResult != nil {
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    self.isSignInOK = true
-                }
+                print("login successful")
             }
         }
     }

@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		2D5BE3DC2EDB4A2400E4E311 /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = 2D5BE3DB2EDB4A2400E4E311 /* FirebaseAI */; };
 		2D5BE3DE2EDB4A2400E4E311 /* FirebaseAILogic in Frameworks */ = {isa = PBXBuildFile; productRef = 2D5BE3DD2EDB4A2400E4E311 /* FirebaseAILogic */; };
+		2DA2EF482EE1D40E0038D753 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2DA2EF472EE1D40E0038D753 /* FirebaseAnalytics */; };
+		2DA2EF4A2EE1D40E0038D753 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2DA2EF492EE1D40E0038D753 /* FirebaseAnalyticsCore */; };
+		2DA2EF4C2EE1D40E0038D753 /* FirebaseAnalyticsIdentitySupport in Frameworks */ = {isa = PBXBuildFile; productRef = 2DA2EF4B2EE1D40E0038D753 /* FirebaseAnalyticsIdentitySupport */; };
+		2DA2EF572EE20CC10038D753 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 2DA2EF562EE20CC10038D753 /* FirebaseAppCheck */; };
+		2DA2EF632EE341FD0038D753 /* Cuckoo in Frameworks */ = {isa = PBXBuildFile; productRef = 2DA2EF622EE341FD0038D753 /* Cuckoo */; };
+		2DA2EF652EE341FD0038D753 /* CuckooGenerator in Frameworks */ = {isa = PBXBuildFile; productRef = 2DA2EF642EE341FD0038D753 /* CuckooGenerator */; };
 		2DE36C202EE0594E00E3627C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2DE36C1F2EE0594E00E3627C /* FirebaseAuth */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +90,10 @@
 			files = (
 				2D5BE3DE2EDB4A2400E4E311 /* FirebaseAILogic in Frameworks */,
 				2DE36C202EE0594E00E3627C /* FirebaseAuth in Frameworks */,
+				2DA2EF4C2EE1D40E0038D753 /* FirebaseAnalyticsIdentitySupport in Frameworks */,
+				2DA2EF4A2EE1D40E0038D753 /* FirebaseAnalyticsCore in Frameworks */,
+				2DA2EF572EE20CC10038D753 /* FirebaseAppCheck in Frameworks */,
+				2DA2EF482EE1D40E0038D753 /* FirebaseAnalytics in Frameworks */,
 				2D5BE3DC2EDB4A2400E4E311 /* FirebaseAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,6 +102,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DA2EF652EE341FD0038D753 /* CuckooGenerator in Frameworks */,
+				2DA2EF632EE341FD0038D753 /* Cuckoo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +168,10 @@
 				2D5BE3DB2EDB4A2400E4E311 /* FirebaseAI */,
 				2D5BE3DD2EDB4A2400E4E311 /* FirebaseAILogic */,
 				2DE36C1F2EE0594E00E3627C /* FirebaseAuth */,
+				2DA2EF472EE1D40E0038D753 /* FirebaseAnalytics */,
+				2DA2EF492EE1D40E0038D753 /* FirebaseAnalyticsCore */,
+				2DA2EF4B2EE1D40E0038D753 /* FirebaseAnalyticsIdentitySupport */,
+				2DA2EF562EE20CC10038D753 /* FirebaseAppCheck */,
 			);
 			productName = DanZZ;
 			productReference = 2DAD36DA2ED89893001D2A6F /* DanZZ.app */;
@@ -179,6 +195,8 @@
 			);
 			name = DanZZTests;
 			packageProductDependencies = (
+				2DA2EF622EE341FD0038D753 /* Cuckoo */,
+				2DA2EF642EE341FD0038D753 /* CuckooGenerator */,
 			);
 			productName = DanZZTests;
 			productReference = 2DAD36E72ED89896001D2A6F /* DanZZTests.xctest */;
@@ -243,6 +261,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				2D5BE3DA2EDB4A2400E4E311 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2DA2EF612EE341FD0038D753 /* XCRemoteSwiftPackageReference "Cuckoo" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2DAD36DB2ED89893001D2A6F /* Products */;
@@ -444,11 +463,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DanZZ/DanZZ.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AGQS7JLL66;
+				DEVELOPMENT_TEAM = 82PXPRS2NU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = DanZZ;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = " This app requires microphone access.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need permission to save analyzed clips back to your photo library.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to select dance videos for practice.";
@@ -464,8 +487,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hong.DanZZ;
+				PRODUCT_BUNDLE_IDENTIFIER = com.polarix.DanZZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -481,11 +505,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DanZZ/DanZZ.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AGQS7JLL66;
+				DEVELOPMENT_TEAM = 82PXPRS2NU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = DanZZ;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = " This app requires microphone access.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need permission to save analyzed clips back to your photo library.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to select dance videos for practice.";
@@ -501,8 +529,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hong.DanZZ;
+				PRODUCT_BUNDLE_IDENTIFIER = com.polarix.DanZZ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -647,6 +676,14 @@
 				minimumVersion = 12.6.0;
 			};
 		};
+		2DA2EF612EE341FD0038D753 /* XCRemoteSwiftPackageReference "Cuckoo" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Brightify/Cuckoo.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -659,6 +696,36 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2D5BE3DA2EDB4A2400E4E311 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAILogic;
+		};
+		2DA2EF472EE1D40E0038D753 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D5BE3DA2EDB4A2400E4E311 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		2DA2EF492EE1D40E0038D753 /* FirebaseAnalyticsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D5BE3DA2EDB4A2400E4E311 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsCore;
+		};
+		2DA2EF4B2EE1D40E0038D753 /* FirebaseAnalyticsIdentitySupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D5BE3DA2EDB4A2400E4E311 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsIdentitySupport;
+		};
+		2DA2EF562EE20CC10038D753 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D5BE3DA2EDB4A2400E4E311 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		2DA2EF622EE341FD0038D753 /* Cuckoo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2DA2EF612EE341FD0038D753 /* XCRemoteSwiftPackageReference "Cuckoo" */;
+			productName = Cuckoo;
+		};
+		2DA2EF642EE341FD0038D753 /* CuckooGenerator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2DA2EF612EE341FD0038D753 /* XCRemoteSwiftPackageReference "Cuckoo" */;
+			productName = CuckooGenerator;
 		};
 		2DE36C1F2EE0594E00E3627C /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

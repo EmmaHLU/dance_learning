@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyBg6O3WY41rMRodHHF8Pwt39fOuRR2nY9U</string>
+	<string>AIzaSyCDuAeAWYc4NI2RKHKucNZoNzKC6cj-qKM</string>
 	<key>GCM_SENDER_ID</key>
 	<string>388539729262</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.hong.DanZZ</string>
+	<string>com.polarix.DanZZ</string>
 	<key>PROJECT_ID</key>
 	<string>dance-666666</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:388539729262:ios:3858aff923550bf151ed7f</string>
+	<string>1:388539729262:ios:19becd956c5d861351ed7f</string>
 </dict>
 </plist>

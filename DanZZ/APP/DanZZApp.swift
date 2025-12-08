@@ -27,6 +27,8 @@ class AppAttestProviderFactory: NSObject, AppCheckProviderFactory {
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+      //use APP check instead of api restrictions based on ios bundle id
+      //for the current release api restrictions have still a bug related with missing x-ios-bundle-identifier header
       let providerFactory = AppAttestProviderFactory()
       AppCheck.setAppCheckProviderFactory(providerFactory)
       FirebaseApp.configure()

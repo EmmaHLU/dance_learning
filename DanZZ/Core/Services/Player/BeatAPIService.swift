@@ -7,6 +7,7 @@
 
 import Foundation
 
+//service to extract beats (using librosa) from an audio/video that is deployed on google cloud run
 class BeatAPIService {
     static let shared = BeatAPIService()
     let apiUrl = "https://beat-api-388539729262.europe-west1.run.app/extract_beats" // endpoint deployed on google cloud run

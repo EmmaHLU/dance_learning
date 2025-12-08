@@ -76,6 +76,9 @@ class GeminiAIService {
                 functionResponses.append(FunctionResponsePart(name: functionCall.name, response: playerManager.setGlobalRate(Float(rate))))
             }
             if functionCall.name == "seekBeatPosition" {
+                //for the moment, JSONValue doesn't support integer directly. so even if the parameter is defined as integer
+                //for example, "groupIndex" : .integer(description: "The index of the beat group starting from 1."),
+                //has to decode it as .number which is Double and then covert to Int explictly
                 guard case let .number(groupIndex) = functionCall.args["groupIndex"] else { fatalError()}
                 guard case let .number(beatsPerGroup) = functionCall.args["beatsPerGroup"] else { fatalError()}
                 functionResponses.append(FunctionResponsePart(name: functionCall.name, response: playerManager.seekBeatPosition(groupIndex: Int(groupIndex), beatsPerGroup: Int(beatsPerGroup))))
